@@ -1,6 +1,10 @@
 <div>
-
-    <form class=" shadow p-5" wire:submit="store">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    <form class=" shadow p-5" wire:submit="update">
         <div class="mb-3">
             <label for="title" class="form-label">Titolo</label>
             <input type="text" class="form-control" id="title" wire:model.live="title">
@@ -22,6 +26,7 @@
                 <span class="text-danger">{{$message}}</span>
             @enderror
         </div>
-        <button type="submit" class="btn btn-primary">Inserisci</button>
+        <button type="submit" class="btn btn-primary">Inserisci modifica</button>
+        <a wire:click="destroy" class="btn btn-danger">Elimina</a>
     </form>
 </div>
